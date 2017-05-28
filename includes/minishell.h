@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julekgwa <julekgwa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/27 17:27:36 by julekgwa          #+#    #+#             */
-/*   Updated: 2017/01/08 22:22:45 by julekgwa         ###   ########.fr       */
+/*   Created: 2017/05/27 22:06:03 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/28 00:12:18 by kmgoduka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ char	**ft_check_env(char **cmd, char **envp);
 void	ft_unsetting_env(char *names, t_env *envp, t_stack *hist);
 char	*ft_build_exec(char **split, t_stack *hist);
 int		ft_is_execute(char *command);
-int	    ft_execute(char *cmd, t_cmd *usr_cmd, char **envp, t_stack *hist);
+int		ft_execute(char *cmd, t_cmd *usr_cmd, char **envp, t_stack *hist);
 void	ft_print_error(char *cmd, int errorno);
-int	    ft_advanced_com(t_cmd *cmd, t_env *envp, t_stack *hist);
+int		ft_advanced_com(t_cmd *cmd, t_env *envp, t_stack *hist);
 int		ft_search_command(char *command);
-int	    ft_execute_commands(char **cmd, char *l, t_env *p, t_stack *hi);
+int		ft_execute_commands(char **cmd, char *l, t_env *p, t_stack *hi);
 char	*ft_get_str(char **av);
 int		ft_myputchar(int c);
 void	ft_clear_screen(void);
@@ -100,8 +100,8 @@ void	ft_signal(void);
 void	init_main(int *ac, char ***av);
 void	manage_up_down(char **buf, char **com, t_stack *hist, int *pos);
 void	ft_ctrl_l(char *comm, int pos, t_stack *hist);
-int	    ft_run_commands(t_cmd *cmd, t_env *env, t_stack *hi);
-int	    ft_pro_cmd(t_cmd *c, t_env *en, struct termios *t, t_stack *hi);
+int		ft_run_commands(t_cmd *cmd, t_env *env, t_stack *hi);
+int		ft_pro_cmd(t_cmd *c, t_env *en, struct termios *t, t_stack *hi);
 void	free_cmd(t_cmd *cmd);
 void	freecopy(char **copy);
 void	ft_free_str(char *str, char *join);
@@ -117,7 +117,7 @@ void	free_envp(t_env *stack);
 int		ft_push_env(t_env *stack, char *value);
 int		ft_is_full(t_env *stack);
 int		fork_pipes(int n[], char **cmd, char **envp, t_stack *hist);
-int     ft_process_pipes(char *line, char **envp, t_stack *hist);
+int		ft_process_pipes(char *line, char **envp, t_stack *hist);
 int		ft_file_redirection(char **red, char **envp, int arr[]);
 int		ft_is_redirect(char **cmd);
 int		ft_arrow_pos(char **cmd);
@@ -160,40 +160,40 @@ void	free_list(t_env *stack);
 void	free_cmd(t_cmd *cmd);
 void	ft_print_results(char **prefix, int *pos);
 void	ft_autocomplete(char **str, int *pos, char **envp);
-void    ft_display_list(t_list *head, int size, int cols);
+void	ft_display_list(t_list *head, int size, int cols);
 int		ft_is_cmd(char *line);
 t_list	*ft_search_binaries(t_list *head, char *needle);
 t_list	*ft_search_system(t_list *head, char *needle);
 t_list	*ft_auto_environ(t_list *head, char **envp, char *needle);
-t_list	*prepend(t_list* head, char *content);
-t_list  *ft_auto_builtins(t_list *head, char *needle);
-void    ft_freenodes(t_list *head);
+t_list	*prepend(t_list *head, char *content);
+t_list	*ft_auto_builtins(t_list *head, char *needle);
+void	ft_freenodes(t_list *head);
 int		ft_in_array(char **av, int len, char *needle);
 int		ft_str_has(char *str, char s[]);
 char	*ft_get_dirname(char **needle);
 int		ft_is_redirect_in_out(char **cmd);
 int		ft_is_inter(char *buf);
-int     ft_ctrl_d(char **cmd, char *buf);
-void    ft_hash_table_bin(t_hash *table[], char **path);
-void    ft_insert_item(t_hash *table[], const char *key, const char *value);
-t_hash  *ft_search(t_hash *head, const char *key);
-void    ft_free_hash_table(t_hash *table[]);
-void    ft_delete_item(t_hash *table[], const char *key);
-int     ft_is_pipe_or_redirect(char *line);
-void    ft_set_hash_table(int res, char *name, char **envp, t_stack *hist);
-int     ft_is_dir(const char *path);
-t_list  *ft_scan_dir(t_list *head, char *needle, char *dir_name);
-int     ft_execute_cmd(char *com, char **cmd, char **envp);
-void    ft_str_substitution(char **str, char **envp);
-void    ft_print_item(char *str, int num_sp);
-int     ft_get_cols(void);
-int     ft_get_max_strlen(t_list *head);
-void    ft_append_slash(char tmp[], char *filename);
-void    ft_swap_or_del_chars(char *cmd, char *buf, int *pos);
-int     ft_is_slash_inhibitor(char *str);
-void    ft_process_slash_inhibitor(t_cmd *cmd, struct termios *term);
-void    ft_rm_newline(char *cmd);
-int     ft_handle_ctrl_c(int in_c);
-int     ft_set_cmd_to_null(char **cmd, int *pos);
+int		ft_ctrl_d(char **cmd, char *buf);
+void	ft_hash_table_bin(t_hash *table[], char **path);
+void	ft_insert_item(t_hash *table[], const char *key, const char *value);
+t_hash	*ft_search(t_hash *head, const char *key);
+void	ft_free_hash_table(t_hash *table[]);
+void	ft_delete_item(t_hash *table[], const char *key);
+int		ft_is_pipe_or_redirect(char *line);
+void	ft_set_hash_table(int res, char *name, char **envp, t_stack *hist);
+int		ft_is_dir(const char *path);
+t_list	*ft_scan_dir(t_list *head, char *needle, char *dir_name);
+int		ft_execute_cmd(char *com, char **cmd, char **envp);
+void	ft_str_substitution(char **str, char **envp);
+void	ft_print_item(char *str, int num_sp);
+int		ft_get_cols(void);
+int		ft_get_max_strlen(t_list *head);
+void	ft_append_slash(char tmp[], char *filename);
+void	ft_swap_or_del_chars(char *cmd, char *buf, int *pos);
+int		ft_is_slash_inhibitor(char *str);
+void	ft_process_slash_inhibitor(t_cmd *cmd, struct termios *term);
+void	ft_rm_newline(char *cmd);
+int		ft_handle_ctrl_c(int in_c);
+int		ft_set_cmd_to_null(char **cmd, int *pos);
 
 #endif

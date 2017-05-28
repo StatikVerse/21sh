@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julekgwa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/27 14:23:22 by julekgwa          #+#    #+#             */
-/*   Updated: 2016/12/27 14:40:07 by julekgwa         ###   ########.fr       */
+/*   Created: 2017/05/27 22:07:10 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/27 22:07:11 by kmgoduka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 # define MAX_HASH 4096
 
@@ -40,7 +43,7 @@ typedef struct		s_stack
 	int				count;
 	int				top;
 	t_search		*search;
-    t_hash     		*hash[MAX_HASH];
+	t_hash			*hash[MAX_HASH];
 	int				ctrl_r;
 	char			*list[4096];
 	char			*paste;
@@ -65,3 +68,4 @@ typedef struct		s_env
 }					t_env;
 
 unsigned int		ft_hash_code(const char *key);
+#endif

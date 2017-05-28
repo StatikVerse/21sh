@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 22:14:41 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/28 02:12:20 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 int		ft_is_valid_arg(const char *str)
@@ -7,7 +19,8 @@ int		ft_is_valid_arg(const char *str)
 		return (0);
 	while (*str)
 	{
-		if (*str != 'l' && *str != 'a' && *str != 'R' && *str != 'r' && *str != 't')
+		if (*str != 'l' && *str != 'a' && *str != 'R' \
+				&& *str != 'r' && *str != 't')
 			return (0);
 		str++;
 	}
@@ -55,7 +68,7 @@ char	*ft_ls_args(char **args)
 	return (ptr);
 }
 
-int ft_ls(char **av)
+int		ft_ls(char **av)
 {
 	char	*args;
 	int		num_dir;

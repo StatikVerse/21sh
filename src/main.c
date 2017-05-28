@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 23:29:41 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/27 23:29:42 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int		ft_search_command(char *command)
@@ -59,7 +71,7 @@ int		ft_run_commands(t_cmd *cmd, t_env *envp, t_stack *hist)
 
 char	*ft_build_cmd(t_stack *hist, char *comm, char *buf, int pos)
 {
-	while (42)
+	while (21)
 	{
 		hist->ret = read(0, buf, 4);
 		buf[hist->ret] = '\0';
@@ -97,7 +109,7 @@ int		main(int ac, char **av, char **envp)
 	envp_copy = copy_envp(4096, envp);
 	ft_init_keyboard(&term, &ac, &av);
 	signal(SIGINT, ft_ctrl_c_signal_handler);
-	while (42)
+	while (21)
 	{
 		prompt(&cmd, &hist);
 		ft_process_slash_inhibitor(&cmd, &term);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 22:08:51 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/28 01:59:40 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
@@ -12,11 +24,11 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct      token
+typedef struct		s_token
 {
-    const char      *top;
-    const char      *end;
-}                   t_token ;
+	const char		*top;
+	const char		*end;
+}					t_token;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -61,6 +73,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+char				*ft_split_strsub(t_token token);
 char				*ft_itoa(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -77,5 +90,5 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				*ft_realloc(void *ptr, size_t len);
-int                 ft_lstsize(t_list *begin_list);
+int					ft_lstsize(t_list *begin_list);
 #endif

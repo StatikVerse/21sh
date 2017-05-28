@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parenthesis.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 23:30:04 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/27 23:30:05 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	ft_check_eof(int read_value, t_cmd *cmd)
@@ -70,7 +82,7 @@ void	ft_process_slash_inhibitor(t_cmd *cmd, struct termios *term)
 	ft_memset(line, 0, SIZE);
 	ft_strncpy(complete, cmd->get_line, ft_strlen(cmd->get_line) - 1);
 	ft_term_off(term);
-	while (42)
+	while (21)
 	{
 		ft_putstr("\n> ");
 		retvalue = read(0, line, SIZE);

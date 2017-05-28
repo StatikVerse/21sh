@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/05/27 22:04:14 by kmgoduka          #+#    #+#              #
+#    Updated: 2017/05/27 22:04:16 by kmgoduka         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = 21sh
 SRC = ./src/main.c ./src/commands/ft_commands.c ./src/utils/ft_ctrl_c_signal_handler.c \
 	./src/commands/ft_cd.c ./src/commands/ft_echo.c ./src/env/ft_env.c \
@@ -33,16 +45,16 @@ $(NAME):
 	@gcc $(FLAGS) $(OPTIONS) $(SRC)
 	@gcc -o $(NAME) $(OBJECT) -L libft/ -lft -ltermcap
 	@chmod 777 $(NAME)
-	@echo "\x1B[32mCompiled project.\x1B[0m"
+	@echo "\x1B[32;4mCompiled: project, 21\x1B[0m"
 
 clean:
 	@make -C libft/ clean
 	@/bin/rm -f $(OBJECT)
-	@echo "\x1B[32mCleaned up object files.\x1B[0m"
+	@echo "\x1B[32;4mCleaned up: o files, 21\x1B[0m"
 
 fclean: clean
 		@make -C libft/ fclean
 		@/bin/rm -f $(NAME)
-		@echo "\x1B[32mCleaned up compiled files.\x1B[0m"
+		@echo "\x1B[32;4mCleaned up: compiled files, 21\x1B[0m"
 
 re: fclean	all

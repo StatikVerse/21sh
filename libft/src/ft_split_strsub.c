@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_split_strsub.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 22:22:36 by kmgoduka          #+#    #+#             */
-/*   Updated: 2017/05/27 22:22:37 by kmgoduka         ###   ########.fr       */
+/*   Created: 2017/05/28 01:50:22 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/28 01:55:17 by kmgoduka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_split_strsub(t_token token)
 {
-	ft_putstr_fd(ft_itoa(n), fd);
+	size_t	len;
+	char	*sub;
+
+	len = token.end - token.top;
+	sub = malloc(len + 1);
+	if (sub)
+	{
+		memcpy(sub, token.top, len);
+		sub[len] = 0;
+	}
+	return (sub);
 }

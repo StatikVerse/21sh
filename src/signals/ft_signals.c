@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_signals.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 23:37:35 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/27 23:37:36 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	ft_signal(void)
@@ -73,17 +85,17 @@ void	ft_cmd_prompt(void)
 	dir = ft_get_current_dir();
 	user = getenv("USER");
 	ft_putstr("\33[2K\r");
-	ft_putstr(GRN);
+	ft_putstr(CYN);
 	ft_putstr("[");
 	ft_putstr(user);
 	ft_putstr("@");
 	ft_putstr(hostname);
 	ft_putstr(RESET);
 	ft_putstr(" ");
-	ft_putstr(CYN);
+	ft_putstr(GRN);
 	ft_putstr(dir);
 	ft_putstr(RESET);
-	ft_putstr(GRN);
+	ft_putstr(CYN);
 	ft_putstr("]$ ");
 	ft_putstr(RESET);
 	free(dir);

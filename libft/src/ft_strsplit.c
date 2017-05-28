@@ -1,97 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/27 22:28:26 by kmgoduka          #+#    #+#             */
+/*   Updated: 2017/05/28 02:07:28 by kmgoduka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
-char    *ft_search_token(const char *s)
+char	*ft_search_token(const char *s)
 {
-    char *p;
+	char *p;
 
-    p = strchr(s + 1, '"');
-    if (p)
-        return  (p);
-    else
-        return (NULL);
+	p = strchr(s + 1, '"');
+	if (p)
+		return (p);
+	else
+		return (NULL);
 }
 
-t_token    ft_return_null(const char **sp, const char *s, t_token token)
+t_token	ft_return_null(const char **sp, const char *s, t_token token)
 {
-  *sp = s;
-  return token;
+	*sp = s;
+	return (token);
 }
 
-t_token ft_get_token(const char **sp, char sep)
+t_token	ft_get_token(const char **sp, char sep)
 {
-    const char *s;
-    t_token token;
+	const char	*s;
+	t_token		token;
 
-    memset(&token, 0, sizeof(t_token));
-    s = *sp;
-    while(*s && *s == sep)
-        ++s;
-    if(!*s)
-      return ft_return_null(sp, s, token);
-    token.top = s;
-    while(*s && *s != sep)
-    {
-        if(*s == '\\')
-            ++s;
-        else if(*s == '"' && sep == ' ' && ft_search_token(s))
-          s = ft_search_token(s);
-        ++s;
-    }
-    token.end = s;
-    *sp = s;
-    return token;
+	memset(&token, 0, sizeof(t_token));
+	s = *sp;
+	while (*s && *s == sep)
+		++s;
+	if (!*s)
+		return (ft_return_null(sp, s, token));
+	token.top = s;
+	while (*s && *s != sep)
+	{
+		if (*s == '\\')
+			++s;
+		else if (*s == '"' && sep == ' ' && ft_search_token(s))
+			s = ft_search_token(s);
+		++s;
+	}
+	token.end = s;
+	*sp = s;
+	return (token);
 }
 
-int count_words(const char *s, char sep)
+int		count_words(const char *s, char sep)
 {
-    int count;
-    t_token token;
+	int		count;
+	t_token	token;
 
-    count = 0;
-    token = ft_get_token(&s, sep);
-    while(token.top != NULL)
-    {
-        ++count;
-        token = ft_get_token(&s, sep);
-    }
-    return (count);
+	count = 0;
+	token = ft_get_token(&s, sep);
+	while (token.top != NULL)
+	{
+		++count;
+		token = ft_get_token(&s, sep);
+	}
+	return (count);
 }
 
-char *ft_split_strsub(t_token token)
+char	**ft_strsplit(const char *s, char sep)
 {
-    size_t len;
-    char *sub;
+	int		words;
+	int		i;
+	char	**result;
+	t_token token;
 
-    len = token.end - token.top;
-    sub = malloc(len + 1);
-    if (sub)
-    {
-        memcpy(sub, token.top, len);
-        sub[len] = 0;
-    }
-    return sub;
-}
-
-char **ft_strsplit(const char *s, char sep)
-{
-    int words;
-    int i;
-    char **result;
-    t_token token;
-
-    if (!s || !sep || !(words = count_words(s, sep)))
-        return NULL;
-    result = malloc(sizeof(char *) * (words + 1));
-    if(!result)
-        return NULL;
-    i = 0;
-    token = ft_get_token(&s, sep);
-
-    while(token.top != NULL){
-        result[i++] = ft_split_strsub(token);
-        token = ft_get_token(&s, sep);
-    }
-    result[i] = NULL;
-    return result;
+	if (!s || !sep || !(words = count_words(s, sep)))
+		return (NULL);
+	result = malloc(sizeof(char *) * (words + 1));
+	if (!result)
+		return (NULL);
+	i = 0;
+	token = ft_get_token(&s, sep);
+	while (token.top != NULL)
+	{
+		result[i++] = ft_split_strsub(token);
+		token = ft_get_token(&s, sep);
+	}
+	result[i] = NULL;
+	return (result);
 }
